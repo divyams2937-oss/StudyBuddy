@@ -6,7 +6,7 @@
 let currentFilter = "all";
 function applyTaskFilter() {
 
-    const taskCards = document.querySelectorAll(".task-card");
+    const taskCards = document.querySelectorAll(".task-item");
 
     taskCards.forEach(function(card) {
 
@@ -84,3 +84,58 @@ window.applyTaskFilter = applyTaskFilter;
 
 // Create the filter buttons
 createFilterButtons();
+// Add completion checkbox to each task
+function addCompletionButtons() {
+
+    const taskCards = document.querySelectorAll(".task-item");
+    const tasks = window.StudyBuddy.getTasks();
+
+    taskCards.forEach(function(card, index) {
+
+        const task = tasks[index];
+
+        if (!task || card.querySelector(".completion-checkbox")) return;
+
+        const checkbox = document.createElement("input");
+
+        checkbox.type = "checkbox";
+        checkbox.className = "completion-checkbox";
+        checkbox.checked = task.completed || false;
+
+        const label = document.createElement("label");
+        label.textContent = "Completed";
+        label.style.marginLeft = "5px";
+
+        card.prepend(label);
+        card.prepend(checkbox);
+
+        card.dataset.completed = checkbox.checked.toString();
+
+        checkbox.addEventListener("change", function() {
+
+            window.StudyBuddy.updateTask(task.id, {
+                completed: checkbox.checked
+            });
+
+        });
+
+    });
+
+    applyTaskFilter();
+}
+
+// Watch for newly displayed tasks
+const taskObserver = new MutationObserver(function() {
+    addCompletionButtons();
+});
+
+const taskListElement = document.getElementById("task-list");
+
+if (taskListElement) {
+    taskObserver.observe(taskListElement, {
+        childList: true
+    });
+}
+
+// Add checkboxes to existing tasks
+addCompletionButtons();
