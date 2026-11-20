@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>StudyBuddy - Student Task Manager</title>
+
+    <!-- Connect CSS file -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR NAVIGATION -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <h2>StudyBuddy</h2>
+        </div>
+
+        <nav class="navigation">
+
+            <a href="#dashboard">Dashboard</a>
+
+            <a href="#add-task">Add Task</a>
+
+            <a href="#my-tasks">My Tasks</a>
+
+            <a href="#progress">My Progress</a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+
+        <!-- DASHBOARD SECTION -->
+
+        <section id="dashboard">
+
+            <div class="welcome-section">
+
+                <h1>Welcome to StudyBuddy!</h1>
+
+                <p>
+                    Organize your studies,
+                    manage your assignments
+                    and achieve your goals.
+                </p>
+
+            </div>
+
+
+            <!-- SUMMARY CARDS -->
+
+            <div class="summary-container">
+
+
+                <div class="summary-card">
+
+                    <h3>Total Tasks</h3>
+
+                    <p id="total-tasks">0</p>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <h3>Completed</h3>
+
+                    <p id="completed-tasks">0</p>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <h3>Pending</h3>
+
+                    <p id="pending-tasks">0</p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ADD TASK SECTION -->
+
+        <section id="add-task">
+
+            <h2>Add a New Task</h2>
+
+            <p>
+                Enter your assignment or study activity below.
+            </p>
+
+
+            <form id="task-form">
+
+
+                <div class="form-group">
+
+                    <label for="task-title">
+                        Task Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="task-title"
+                        placeholder="Enter your task name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="task-subject">
+                        Subject
+                    </label>
+
+                    <input
+                        type="text"
+                        id="task-subject"
+                        placeholder="Enter subject"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="task-deadline">
+                        Deadline
+                    </label>
+
+                    <input
+                        type="date"
+                        id="task-deadline"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="task-priority">
+                        Priority
+                    </label>
+
+                    <select id="task-priority">
+
+                        <option value="Low">Low</option>
+
+                        <option value="Medium" selected>
+                            Medium
+                        </option>
+
+                        <option value="High">High</option>
+
+                    </select>
+
+                </div>
+
+
+                <button type="submit">
+                    Add Task
+                </button>
+
+
+            </form>
+
+        </section>
+
+
+
+        <!-- TASK LIST SECTION -->
+
+        <section id="my-tasks">
+
+            <h2>My Tasks</h2>
+
+            <p>
+                View and manage your assignments.
+            </p>
+
+
+            <!-- Member 4 will add filters here -->
+
+
+            <div id="task-list">
+
+                <p id="empty-message">
+                    No tasks yet. Add your first task!
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- PROGRESS SECTION -->
+
+        <section id="progress">
+
+            <h2>My Study Progress</h2>
+
+            <p id="progress-text">
+                0% Completed
+            </p>
+
+
+            <progress
+                id="progress-bar"
+                value="0"
+                max="100">
+            </progress>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- CONNECT JAVASCRIPT FILES -->
+
+    <script src="js/tasks.js"></script>
+
+    <script src="js/filters.js"></script>
+
+    <script src="js/progress.js"></script>
+
+
+</body>
+
+</html>
