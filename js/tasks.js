@@ -32,13 +32,21 @@ function getTasks() {
 }
 
 // Display tasks
-function displayTasks() {
-    taskList.innerHTML = "";
 
+function displayTasks() {
+
+    // Remove only previously displayed task cards
+    taskList.querySelectorAll(".task-item").forEach(item => {
+        item.remove();
+    });
+
+    // Show empty message if there are no tasks
     emptyMessage.style.display =
         tasks.length === 0 ? "block" : "none";
 
+    // Display each task
     tasks.forEach((task) => {
+
         const taskItem = document.createElement("div");
         taskItem.className = "task-item";
 
@@ -80,6 +88,7 @@ function displayTasks() {
         taskList.appendChild(taskItem);
     });
 }
+
 
 // Add a new task
 function addTask(task) {
